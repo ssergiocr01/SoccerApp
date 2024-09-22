@@ -22,7 +22,7 @@ namespace Datos
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SoccerAppBd;Integrated Security=true");
+            builder.UseSqlServer("Data Source=PCET;Initial Catalog=SoccerAppBd;Integrated Security=true; TrustServerCertificate=True;");
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
