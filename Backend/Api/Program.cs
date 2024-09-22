@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 var conexion = builder.Configuration.GetConnectionString("CadenaSql");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(conexion));
 
+builder.Services.AddCors();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,6 +23,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(x => x.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod());
 
 app.UseHttpsRedirection();
 
